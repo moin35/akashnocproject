@@ -61,13 +61,10 @@ public function complainpost($eid){
         $cm->save();
         Session::flash('saved',1);
         Mail::send('mail/complainmail',array('sname'=>$name,'svahicle_no'=>$vahicle_no,'scomplain_type'=>$complain_type,'scomplain'=>$complain,'sis_solved'=>$is_solved,'scomplain_status'=>$complain_status,'stime'=>$date),function($message){
-            
-            $message->to('besuwasmdmoin@gmail.com')->subject('Welcome to Akash Technology !');
+            $message->from('moin.akashtech@gmail.com','Akash Technology');
+            $message->to('biplob.trackme@gmail.com')->cc('kamrulakash12@gmail.com','ontutrack.me@gmail.com','bhuiyan016.limon@gmail.com')->subject('NOC Complain');
         });
-        Mail::send('mail/complainmail',array('sname'=>$name,'svahicle_no'=>$vahicle_no,'scomplain_type'=>$complain_type,'scomplain'=>$complain,'sis_solved'=>$is_solved,'scomplain_status'=>$complain_status,'stime'=>$date),function($message){
-            
-            $message->to('saifcse06@gmail.com','Saif')->subject('Welcome to Akash Technology !');
-        });
+        
         return Redirect::to('complain/'.$eid);}else{return 'not logged in!';}
     }
 public function carsearch($eid){

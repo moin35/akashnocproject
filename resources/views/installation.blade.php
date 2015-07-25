@@ -5,12 +5,25 @@
 @section('body')
    
     @if(Session::get('saved'))
-        <h2>Send Message successful !!</h2>
+        <h2 style="color:green;">Send Message successfully !!</h2>
         @endif
-     
-<h2 class="text-center">Installation Form</h2>
+     <div class="row">
+        <div class="box col-md-11">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-picture"></i> Installation Form</h2>
 
-    {!! Form::open() !!}
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+              {!! Form::open() !!}
     Installation Type:{!!Form::select('type', array('New Device Installation' => 'New Device Installation','Troubleshooting' => 'Troubleshooting'),null,['class'=>'form-control'])!!}<br/>
     Vahicle No: {!!Form::text('vahicle_no','',['class'=>'form-control'])!!}<br/>
     Client Phone No: {!!Form::text('phone','',['class'=>'form-control'])!!}<br/>
@@ -24,5 +37,18 @@
     {!!Form::submit('Submit',['class'=>'btn btn-primary form-control'])!!}
 
     {!!Form::close()!!}<br/><br/>
+  
+                </div>
+
+            </div>
+
+        </div>
+        <!--/span-->
+       
+        <!--/span-->
+    </div><!--/row-->       
+
+
+    
 
 @stop

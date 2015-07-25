@@ -30,7 +30,6 @@ Incharge Message
                     <td>{{$d->time}}</td>
                     
                     <td><a href="{{URL::to('/')}}/inchargeview/{{$d->id}}" class="btn btn-primary">View More</a></td>
-                    <td></td>
                 </tr>
                 @endforeach
                 </tbody>

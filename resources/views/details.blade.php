@@ -3,17 +3,44 @@
 Details of {{$d->name}}
 @stop
 @section('body')
-
-            <h2 class="text-center">Your Profile</h2>
-           	@if(Session::get('u'))
+@if(Session::get('u'))
                     <h2 class="text-center">Record Successfully updated!</h2>
                 @endif
-            <h4>Name: {{$d->name}}.</h4>
-            <h4>Email: {{$d->email}}.</h4>
-			<h4>Departmant name: {{$d->dep_name}}.</h4>
-			<h4>Designation: {{$d->designation}}.</h4>
-			<h4>Responsblity: {{$d->responsblity}}.</h4>
-			<h4>Phone no: {{$d->phone_no}}.</h4>
+
+<div class="row">
+        <div class="box col-md-11">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-picture"></i> Update Your Profile</h2>
+
+                    <div class="box-icon"> 
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+              <h4>Name: {{$d->name}}</h4>
+            <h4>Email: {{$d->email}}</h4>
+			<h4>Departmant name: {{$d->dep_name}}</h4>
+			<h4>Designation: {{$d->designation}}</h4>
+			<h4>Responsblity: {{$d->responsblity}}</h4>
+			<h4>Phone no: {{$d->phone_no}}</h4>
 			<a href="{{URL::to('update/'.Auth::user()->eid)}}" class="btn btn-primary">Edit Record</a>
-			<a href="{{URL::to('/')}}" class="btn btn-primary">Dashboard</a>
+  
+                </div>
+
+            </div>
+
+        </div>
+        <!--/span-->
+       
+        <!--/span-->
+    </div><!--/row-->
+           
+           	
+			
 @stop

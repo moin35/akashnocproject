@@ -18,25 +18,25 @@
     <meta charset="utf-8">
     <title>@yield('title')</title>
     <!-- The styles -->
-    <link id="bs-css" href="../css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <link id="bs-css" href="{{URL::to('/')}}/css/bootstrap-cerulean.min.css" rel="stylesheet">
 
-    <link href="../css/charisma-app.css" rel="stylesheet">
-    <link href='../bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='../bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='../bower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='../bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='../bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='../bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='../css/jquery.noty.css' rel='stylesheet'>
-    <link href='../css/noty_theme_default.css' rel='stylesheet'>
-    <link href='../css/elfinder.min.css' rel='stylesheet'>
-    <link href='../css/elfinder.theme.css' rel='stylesheet'>
-    <link href='../css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='../css/uploadify.css' rel='stylesheet'>
-    <link href='../css/animate.min.css' rel='stylesheet'>
+    <link href="{{URL::to('/')}}/css/charisma-app.css" rel="stylesheet">
+    <link href='{{URL::to('/')}}/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='{{URL::to('/')}}/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/jquery.noty.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/elfinder.min.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/uploadify.css' rel='stylesheet'>
+    <link href='{{URL::to('/')}}/css/animate.min.css' rel='stylesheet'>
 
     <!-- jQuery -->
-    <script src="../bower_components/jquery/jquery.min.js"></script>
+    <script src="{{URL::to('/')}}/bower_components/jquery/jquery.min.js"></script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -118,7 +118,7 @@
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('installation')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Send Message to Technician</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{URL::to('inchargeincomeing')}}"><i class="glyphicon glyphicon-eye-open"></i><span> NOC Replay Msg</span></a>
+                        <li><a class="ajax-link" href="{{URL::to('inchargeincomeing')}}"><i class="glyphicon glyphicon-eye-open"></i><span> NOC Incomplete Message List</span></a>
                         </li>
                          <li><a class="ajax-link" href="{{URL::to('notice')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Notice</span></a>
                         </li>
@@ -161,7 +161,7 @@
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('installation')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Send Message to Technician</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{URL::to('inchargeincomeing')}}"><i class="glyphicon glyphicon-eye-open"></i><span> NOC Replay Msg</span></a>
+                        <li><a class="ajax-link" href="{{URL::to('inchargeincomeing')}}"><i class="glyphicon glyphicon-eye-open"></i><span> NOC Incomplete Message List</span></a>
                         </li>
                                     </ul>          
                     </div>
@@ -186,7 +186,7 @@
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('complain/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Complain Message Box</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{URL::to('viewmsg/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Message</span></a>
+                        <li><a class="ajax-link" href="{{URL::to('viewmsg/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Your Pending Message</span></a>
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('nocinchargeview/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Message From Incharge</span></a>
                         </li>
@@ -249,7 +249,7 @@
 
 <!-- external javascript -->
 
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="{{URL::to('/')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->
 <script src="js/jquery.cookie.js"></script>
@@ -260,7 +260,7 @@
 <script src='js/jquery.dataTables.min.js'></script>
 
 <!-- select or dropdown enhancer -->
-<script src="../bower_components/chosen/chosen.jquery.min.js"></script>
+<script src="{{URL::to('/')}}/bower_components/chosen/chosen.jquery.min.js"></script>
 <!-- plugin for gallery image view -->
 <script src="bower_components/colorbox/jquery.colorbox-min.js"></script>
 <!-- notification plugin -->

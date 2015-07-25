@@ -31,7 +31,7 @@
                     <td>{{$d->install_time}}</td>
                     <td>{{$d->assign_to}}</td>
                         @if($tstatus==1)
-                        <td>Successfully</td>
+                        <td>Successfull</td>
                     @else
                     <td>Incomplete</td>
 

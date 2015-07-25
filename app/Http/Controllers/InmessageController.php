@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
@@ -48,7 +47,7 @@ public function inchargemessagepost(){
         Mail::send('mail/imsgmail',array('from'=>$from_name,'msg'=>$msg),function($message){
                 $message->to(Input::get('email'))->subject('Welcome to Akash Technology !');
         });
-        Session::flash('Saved',1);
+        Session::flash('saved',1);
         return Redirect::to('imessage');
     } else{return 'not logged in !';}
 }
@@ -109,8 +108,7 @@ public function inchargeupdatestatus($id){
 
 public function nocinchargeviewget($id){
    if(Auth::check()){
-        $in=Inmessage::orderBy('id','DESC')->where('status','=',0)->get();
-
+        $in=Inmessage::orderBy('id','DESC')->where('status','=',0)->where('eid','=',$id)->get();
         return view('nocinchargeview')->with('im',$in);
     } else{return 'not logged in!';}
 }
@@ -129,11 +127,9 @@ public function inchargetoemployeeviewpost($id){
     if(Auth::check()){
 
         $msg=Input::get('msg');
-       
         $irp=new Inmessagereplay;
         $irp->msg=$msg;
         $irp->inmessage_id=$id;
-
         $irp->from_name=Auth::user()->name;
         $irp->save();
         

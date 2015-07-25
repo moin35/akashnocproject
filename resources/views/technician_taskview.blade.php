@@ -9,6 +9,7 @@
                 <table class="table table-bordered table-hover table-responsive">
                 <thead>
                 <tr>
+                <th>Sl. No.</th>
                     <th>Message From</th>
                     <th>Message To</th>
                     <th>Vahicle No</th>
@@ -21,10 +22,12 @@
                 <tbody>
                 @foreach($task as $d)
                 <tr>
+                <td>{{$d->id}}</td>
                     <td>{{$d->assign_by}}</td>
                     <td>{{$d->assign_to}}</td>
                     <td>{{$d->vahicle_no}}</td>
                     <td>{{$d->date}}</td>
+
                     <td><a href="{{URL::to('/')}}/taskdetailview/{{$d->id}}" class="btn btn-primary">View More</a></td>
                 </tr>
                 @endforeach

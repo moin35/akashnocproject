@@ -3,10 +3,23 @@
     Update Record of {{$r->name}}
 @stop
 @section('body')
-            
-                <h2 class="text-center">Update Records for {{$r->name}}</h2>
-  
-                {!!Form::open()!!}
+            <div class="row">
+        <div class="box col-md-11">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-picture"></i> Update Records for {{$r->name}}</h2>
+
+                    <div class="box-icon"> 
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+              {!!Form::open()!!}
                 Name:{!!Form::text('name',$r->name,['class'=>'form-control'])!!}
                 <br/>
                 Email:{!!Form::text('email',$r->email,['class'=>'form-control'])!!}
@@ -22,4 +35,17 @@
                 {!!Form::submit('Update',['class'=>'btn btn-primary form-control'])!!}
                 {!!Form::close()!!}
           
+                </div>
+
+            </div>
+
+        </div>
+        <!--/span-->
+       
+        <!--/span-->
+    </div><!--/row-->
+           
+        
+  
+                
 @stop

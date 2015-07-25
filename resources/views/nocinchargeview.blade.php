@@ -18,7 +18,7 @@ Incharge to employee Message
                     <th>To</th>
                     <th>Message Time</th>
                     <th>See Full Message</th>
-                    
+                     
                 </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@ Incharge to employee Message
                     <td>{{$d->time}}</td>
                     
                     <td><a href="{{URL::to('/')}}/inchargetoemployeeview/{{$d->id}}" class="btn btn-primary">View More</a></td>
-                    <td></td>
+             
                 </tr>
                 @endforeach
                 </tbody>

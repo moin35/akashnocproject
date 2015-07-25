@@ -27,7 +27,8 @@
                     <td>{{$d->name}}</td>
                     <td>{{$d->vahicle_no}}</td>
                     <td>{{$d->time}}</td>
-                    <td><a href="{{URL::to('/')}}/employeeviewmore/{{$d->id}}" class="btn btn-primary">View More</a></td>
+                    <td><a href="{{URL::to('/')}}/employeeviewmore/{{$d->id}}" class="btn btn-primary">View More</a>
+                </td>
                 </tr>
                 @endforeach
                 </tbody>

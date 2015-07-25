@@ -4,7 +4,7 @@
 @stop
 @section('body')
 
-<!--<div>
+<div>
     <ul class="breadcrumb">
         <li>
             <a href="#">Home</a>
@@ -15,35 +15,18 @@
     </ul>
 </div>
 <div class=" row">
-    <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
-            <i class="glyphicon glyphicon-user blue"></i>
-
-            <div>Total Members</div>
-            <div>507</div>
-            <span class="notification">6</span>
-        </a>
-    </div>
 
     <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="#">
+        <a data-toggle="tooltip" title="{!!$countmember!!} total members." class="well top-block" href="{{URL::to('aemployee')}}">
             <i class="glyphicon glyphicon-star green"></i>
 
-            <div>Pro Members</div>
-            <div>228</div>
-            <span class="notification green">4</span>
+            <div>Total Members</div>
+            <div>{!!$countmember!!}</div>
+            <span class="notification green">{!!$countmember!!}</span>
         </a>
     </div>
-    <div class="col-md-3 col-sm-3 col-xs-6">
-        <a data-toggle="tooltip" title="12 new messages." class="well top-block" href="#">
-            <i class="glyphicon glyphicon-envelope red"></i>
-
-            <div>Messages</div>
-            <div>25</div>
-            <span class="notification red">12</span>
-        </a>
-    </div>
-</div>-->
+    
+</div>
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">

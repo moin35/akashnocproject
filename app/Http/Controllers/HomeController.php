@@ -38,12 +38,16 @@ class HomeController extends Controller
     public function postlogin(){
         if(Auth::attempt(['email'=>Input::get('email'),'password'=>Input::get('pass')])){
             if(Auth::check()){
+
                 return Redirect::to('dashboard');
+
             }
         }
         else
         {
-            return 'Login failed !';
+             Session::flash('saved',1);
+            return view('login');
+             
         }
     }
 
@@ -57,8 +61,9 @@ class HomeController extends Controller
                 $tstatus=Task::where('incharge_status','=',0)->pluck('incharge_status');
                 $in=Inmessage::orderBy('id','DESC')->where('status','=',0)->get();
                 $instatus=Inmessage::where('status','=',0)->pluck('status');
-                  $nb=Notice::orderBy('id','DESC')->first();
-                  return view('dashboard.superadmin')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb);
+                $nb=Notice::orderBy('id','DESC')->first();
+                $countmember=Employee::all()->count();
+                  return view('dashboard.superadmin')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb)->with('countmember',$countmember);
              }
             if(priv() == 2){
                
@@ -69,12 +74,16 @@ class HomeController extends Controller
                 $in=Inmessage::orderBy('id','DESC')->where('status','=',0)->get();
                 $instatus=Inmessage::where('status','=',0)->pluck('status');
                 $nb=Notice::orderBy('id','DESC')->first();
-                  return view('dashboard.incharge')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb);
+                $mecounnoc=Complain::where('incharge_status','=',0)->count();
+                  
+                  return view('dashboard.incharge')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb)->with('mecounnoc',$mecounnoc);
             }
             if(priv() == 3){
-                
+                $mecoun=Inmessage::where('to_name','=',Auth::user()->name)->where('status','=',0)->count();
+                $mecountask=Task::where('incharge_status','=',0)->count();
+             
                 $nb=Notice::orderBy('id','DESC')->first();
-                return view('dashboard.employee')->with('notice',$nb);
+                return view('dashboard.employee')->with('notice',$nb)->with('mcount',$mecoun)->with('mecountask',$mecountask);
             }
             if(priv() == 4){
                 $nb=Notice::orderBy('id','DESC')->first();
@@ -221,5 +230,11 @@ public function setpreviligepost($eid){
         return Redirect::to('setpre/'.$eid);
     } else{return 'not logged in!';}
 }
+
+
+
+
+
+
 
 }
