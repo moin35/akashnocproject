@@ -23,7 +23,9 @@ Details of {{$d->name}}
                     </div>
                 </div>
                 <div class="box-content">
-              <h4>Name: {{$d->name}}</h4>
+
+                <img src="{{URL::to('/')}}/employeeimage/{{$d->img}}"  class="center-block img-circle img-responsive" width="100" height ="100">
+                             <h4>Name: {{$d->name}}</h4>
             <h4>Email: {{$d->email}}</h4>
 			<h4>Departmant name: {{$d->dep_name}}</h4>
 			<h4>Designation: {{$d->designation}}</h4>

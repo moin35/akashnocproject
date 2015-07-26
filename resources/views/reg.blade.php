@@ -50,7 +50,7 @@
             <div class="box-content">
                
 
-                {!! Form::open() !!}
+                {!! Form::open(['files'=>'true']) !!}
                     <div class="form-group has-success has-feedback">
                         <label class="control-label" for="inputSuccess4">Full Name: </label>
                         {!!Form::text('name','',['class'=>'form-control'])!!}<br/>
@@ -91,6 +91,15 @@
                   {!!Form::text('email','',['class'=>'form-control'])!!}<br/>
                         <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                     </div>
+
+
+<div class="form-group has-success has-feedback">
+                        <label class="control-label" for="inputSuccess4">  Upload a Photo:</label>
+                  {!!Form::file('image','',['class'=>'form-control'])!!}<br/>
+                        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                    </div>
+
+
                     <div class="form-group has-success has-feedback">
                         <label class="control-label" for="inputSuccess4">  Password:</label>
                        {!!Form::password('password',['class'=>'form-control'])!!}<br/>

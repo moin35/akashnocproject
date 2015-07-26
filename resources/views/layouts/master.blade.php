@@ -10,7 +10,6 @@
         Copyright 2012-2014 Muhammad Usman
         Licensed under the Apache License v2.0
         http://www.apache.org/licenses/LICENSE-2.0
-
         http://usman.it
         http://twitter.com/halalit_usman
         ===
@@ -44,7 +43,7 @@
     <![endif]-->
 
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{{URL::to('/')}}/employeeimage/{{$p->fev}}">
 
 </head>
 
@@ -54,8 +53,8 @@
 
         <div class="navbar-inner">
            
-            <a class="col-lg-7 col-md-12" href=""> <img alt="" src="../img/logo20.png" class="hidden-xs"/>
-                <span style="font-size:20px; color:black;">Akash Technology</span></a>
+            <a class="col-lg-7 col-md-12" href=""> <img alt="" src="{{URL::to('/')}}/employeeimage/{{$p->logo}}" class="hidden-xs  img-circle" width="20" height ="20"/>
+                <span style="font-size:20px; color:black;">{{$p->company_name}}</span></a>
 
     
 
@@ -125,6 +124,10 @@
                          <li><a class="ajax-link" href="{{URL::to('reg')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Registration</span></a>
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('userlist/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Manage Incharge & Technician</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="{{URL::to('header/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Change Logo & Company name</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="{{URL::to('updateheader/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Edit Header</span></a>
                         </li>
                                     </ul>
 

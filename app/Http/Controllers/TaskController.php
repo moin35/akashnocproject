@@ -15,6 +15,7 @@ use App\Task;
 use App\User;
 use App\Notice;
 use App\Employee;
+use App\Header;
 use App\Taskreplay;
 use App\Complain;
 use Hash;
@@ -122,6 +123,7 @@ public function allemployeadmineview(){
     if(Auth::check()){ 
        // return 'OK';
             $emp =Employee::all();
+            
         return view('aemployeelist')->with('em',$emp);
     }else{return 'not logged in!';}
 }

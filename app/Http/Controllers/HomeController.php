@@ -13,6 +13,7 @@ use App\Employee;
 use App\Complain;
 use App\Task;
 use App\Inmessage;
+use App\Header;
 use Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -63,7 +64,14 @@ class HomeController extends Controller
                 $instatus=Inmessage::where('status','=',0)->pluck('status');
                 $nb=Notice::orderBy('id','DESC')->first();
                 $countmember=Employee::all()->count();
-                  return view('dashboard.superadmin')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb)->with('countmember',$countmember);
+                
+                  return view('dashboard.superadmin')->with('k',$dm)->with('status',$status)->
+                  with('j',$tv)->
+                  with('tstatus',$tstatus)->
+                  with('s',$in)->
+                  with('instatus',$instatus)->
+                  with('notice',$nb)->
+                  with('countmember',$countmember);
              }
             if(priv() == 2){
                
@@ -76,14 +84,22 @@ class HomeController extends Controller
                 $nb=Notice::orderBy('id','DESC')->first();
                 $mecounnoc=Complain::where('incharge_status','=',0)->count();
                   
-                  return view('dashboard.incharge')->with('k',$dm)->with('status',$status)->with('j',$tv)->with('tstatus',$tstatus)->with('s',$in)->with('instatus',$instatus)->with('notice',$nb)->with('mecounnoc',$mecounnoc);
+                  return view('dashboard.incharge')->
+                  with('k',$dm)->with('status',$status)->
+                  with('j',$tv)->with('tstatus',$tstatus)->
+                  with('s',$in)->with('instatus',$instatus)->
+                  with('notice',$nb)->
+                  with('mecounnoc',$mecounnoc);
             }
             if(priv() == 3){
                 $mecoun=Inmessage::where('to_name','=',Auth::user()->name)->where('status','=',0)->count();
                 $mecountask=Task::where('incharge_status','=',0)->count();
-             
+                
                 $nb=Notice::orderBy('id','DESC')->first();
-                return view('dashboard.employee')->with('notice',$nb)->with('mcount',$mecoun)->with('mecountask',$mecountask);
+                return view('dashboard.employee')->
+                with('notice',$nb)->
+                with('mcount',$mecoun)->
+                with('mecountask',$mecountask);
             }
             if(priv() == 4){
                 $nb=Notice::orderBy('id','DESC')->first();
@@ -99,6 +115,7 @@ class HomeController extends Controller
     public function viewrecord($id){
         if(Auth::check()){ 
             $vq =Employee::where('eid','=',$id)->first();
+            
             return view('details')->with('d',$vq);} 
             else{return 'not logged in!';}
     }
@@ -107,12 +124,50 @@ class HomeController extends Controller
         if(Auth::check()){
 
         $vq =Employee::where('eid','=',$eid)->first();
+        
         return view('update')->with('r',$vq);}else{return 'not logged in!';}
     }
     public function updaterecordp($eid){
         if(Auth::check())
             { 
-                $up = Employee::where('eid','=',$eid)->update(['name'=>Input::get('name'),'email'=>Input::get('email'),'dep_name'=>Input::get('dep_name'),'designation'=>Input::get('designation'),'responsblity'=>Input::get('responsblity')]);
+                if(Input::hasFile('image')){
+          $extension = Input::file('image')->getClientOriginalExtension();
+                   if($extension=='png'||$extension=='jpg'||$extension=='jpeg'||$extension=='bmp'||
+                      $extension=='PNG'||$extension=='jpg'||$extension=='JPEG'||$extension=='BMP'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('image')->move($destinationPath,$fname);
+                       $final=$fname;
+                   }   
+
+        }
+        else{
+
+            $final='';
+        }
+
+
+/*if( $request->hasFile('pic') ){
+    $path = 'images/';
+    $file = Image::make(input::file('pic'));
+    $fileName = Input::file('pic')->getClientOriginalName();
+    $file->save($path."original/".$fileName);
+    $students->original = $path."original/".$fileName;
+    //get the desire image size
+    $file->fit(120,90);
+    $file->save($path."fit/".$fileName);
+    $students->image = $path."fit/".$fileName; 
+    }*/
+
+
+
+                $up = Employee::where('eid','=',$eid)->
+                update(['name'=>Input::get('name'),'email'=>Input::get('email'),
+                    'dep_name'=>Input::get('dep_name'),
+                    'designation'=>Input::get('designation'),
+                    'responsblity'=>Input::get('responsblity'),
+                    'img'=>$final]);
                 $up = User::where('eid','=',$eid)->update(['name'=>Input::get('name')]);
         Session::flash('u',1);
         return Redirect::to('details/'.$eid);}else{return 'not logged in!';}
@@ -126,7 +181,9 @@ public function updatepassg($eid){
         if(Auth::check()){
 
         $pass =User::where('eid','=',$eid)->first();
-        return view('passchange')->with('pass',$pass);}else{return 'not logged in!';}
+        
+        return view('passchange')->
+        with('pass',$pass);}else{return 'not logged in!';}
     }
     public function updatepassp($eid){
         if(Auth::check())
@@ -180,7 +237,25 @@ public function updatepassg($eid){
         $eid=Input::get('eid');
         $phone_no=Input::get('phone_no');
         $account_type=Input::get('account_type');
+        
         $password = Hash::make(Input::get('password'));
+
+        if(Input::hasFile('image')){
+          $extension = Input::file('image')->getClientOriginalExtension();
+                   if($extension=='png'||$extension=='jpg'||$extension=='jpeg'||$extension=='bmp'||
+                      $extension=='PNG'||$extension=='jpg'||$extension=='JPEG'||$extension=='BMP'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('image')->move($destinationPath,$fname);
+                       $final=$fname;
+                   }   
+
+        }
+        else{
+
+            $final='';
+        }
         
         $nn = new User;
         $nn->name=$name;
@@ -199,8 +274,10 @@ public function updatepassg($eid){
         $em->responsblity=$responsblity;
         $em->phone_no=$phone_no;
         $em->email=$email;
+        $em->img=$final;
         $em->account_type=$account_type;
         $em->save();
+
         Mail::send('mail/regmail',array('name'=>$name,'email'=>$email),function($message){
                 $message->to(Input::get('email'))->subject('Welcome to Akash Technology !');
         });
@@ -231,6 +308,116 @@ public function setpreviligepost($eid){
     } else{return 'not logged in!';}
 }
 
+public function headerget($eid){
+    if(Auth::check()){
+        $hd=Header::orderBy('id','DESC')->first();
+        return view('header_logo')->with('p',$hd);
+    }else {return 'Not logged in!';}
+}
+
+public function headerpost($eid){
+    if(Auth::check()){
+        $cname=Input::get('company_name');
+        if(Input::hasFile('image')){
+          $extension = Input::file('image')->getClientOriginalExtension();
+                   if($extension=='png'||$extension=='jpg'||$extension=='jpeg'||$extension=='bmp'||
+                      $extension=='PNG'||$extension=='jpg'||$extension=='JPEG'||$extension=='BMP'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('image')->move($destinationPath,$fname);
+                       $final=$fname;
+                   }   
+
+        }
+        else{
+
+            $final='';
+        }
+
+
+
+if(Input::hasFile('fev')){
+          $extension = Input::file('fev')->getClientOriginalExtension();
+                   if($extension=='ico'|| $extension=='ICO'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('fev')->move($destinationPath,$fname);
+                       $fev=$fname;
+                   }   
+
+        }
+        else{
+
+            $fev='';
+        }
+
+
+
+        $header=new Header;
+        $header->company_name=$cname;
+        $header->logo=$final;
+        $header->fev=$fev;
+//return $header;
+        $header->save();
+        Session::flash('saved',1);    
+        return Redirect::to('header/'.$eid);
+
+
+    }else {return 'not logged in!';}
+}
+
+
+public function updateheaderget($eid){
+        if(Auth::check()){
+
+        
+        $hd=Header::orderBy('id','DESC')->first();
+        return view('update_header')->with('p',$hd);}else{return 'not logged in!';}
+    }
+    public function updateheaderpost($eid){
+        if(Auth::check())
+            { 
+                if(Input::hasFile('image')){
+          $extension = Input::file('image')->getClientOriginalExtension();
+                   if($extension=='png'||$extension=='jpg'||$extension=='jpeg'||$extension=='bmp'||
+                      $extension=='PNG'||$extension=='jpg'||$extension=='JPEG'||$extension=='BMP'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('image')->move($destinationPath,$fname);
+                       $final=$fname;
+                   }   
+
+        }
+        else{
+
+            $final='';
+        }
+
+
+if(Input::hasFile('fev')){
+          $extension = Input::file('fev')->getClientOriginalExtension();
+                   if($extension=='ico'|| $extension=='ICO'){
+                       $date=date('dmyhsu');
+                        $fname=$date.'.'.$extension;
+                        $destinationPath = 'employeeimage/';
+                        Input::file('fev')->move($destinationPath,$fname);
+                       $fev=$fname;
+                   }   
+
+        }
+        else{
+
+            $fev='';
+        }
+           $up = Header::where('eid','=',$eid)->
+                update(['company_name'=>Input::get('company_name'),'logo'=>$final,'fev'=>$fev]);
+                
+        Session::flash('u',1);
+        return Redirect::to('updateheader/'.$eid);}else{return 'not logged in!';}
+    }
 
 
 

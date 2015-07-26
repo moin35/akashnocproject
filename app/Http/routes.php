@@ -103,8 +103,12 @@ Route::get('userlist/{eid}','HomeController@userlist');
 Route::get('setpre/{eid}','HomeController@setpreviligeget');
 Route::post('setpre/{eid}','HomeController@setpreviligepost');
 
+Route::get('header/{eid}','HomeController@headerget');
+Route::post('header/{eid}','HomeController@headerpost');
 
 
+Route::get('updateheader/{eid}','HomeController@updateheaderget');
+Route::post('updateheader/{eid}','HomeController@updateheaderpost');
 
 
 
