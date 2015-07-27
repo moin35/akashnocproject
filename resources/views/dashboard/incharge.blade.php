@@ -58,7 +58,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well">
-                <h2><i class="glyphicon glyphicon-info-sign"></i> NOC Pending JOB List waiting for incharge commend</h2>
+                <h2><i class="glyphicon glyphicon-info-sign"></i> NOC Pending JOB List waiting for incharge command</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i
@@ -118,7 +118,7 @@
     <div class="box col-md-12">
         <div class="box-inner">
             <div class="box-header well">
-                <h2><i class="glyphicon glyphicon-info-sign"></i> Technician Incomplete Report Waiting for incharge Commend</h2>
+                <h2><i class="glyphicon glyphicon-info-sign"></i> Technician Incomplete Report Waiting for incharge command</h2>
 
                 <div class="box-icon">
                     <a href="#" class="btn btn-setting btn-round btn-default"><i

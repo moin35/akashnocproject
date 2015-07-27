@@ -419,7 +419,9 @@ if(Input::hasFile('fev')){
         return Redirect::to('updateheader/'.$eid);}else{return 'not logged in!';}
     }
 
-
+/*public function errorget(){
+  return view('error');
+}*/
 
 
 

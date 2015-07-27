@@ -110,6 +110,9 @@ Route::post('header/{eid}','HomeController@headerpost');
 Route::get('updateheader/{eid}','HomeController@updateheaderget');
 Route::post('updateheader/{eid}','HomeController@updateheaderpost');
 
+//Route::get('error','HomeController@errorget');
+
+
 
 
 

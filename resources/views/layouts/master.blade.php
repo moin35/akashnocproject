@@ -119,7 +119,7 @@
                         </li>
                         <li><a class="ajax-link" href="{{URL::to('inchargeincomeing')}}"><i class="glyphicon glyphicon-eye-open"></i><span> NOC Incomplete Message List</span></a>
                         </li>
-                         <li><a class="ajax-link" href="{{URL::to('notice')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Notice</span></a>
+                         <li><a class="ajax-link" href="{{URL::to('notice/'.Auth::user()->eid)}}"><i class="glyphicon glyphicon-eye-open"></i><span> Notice</span></a>
                         </li>
                          <li><a class="ajax-link" href="{{URL::to('reg')}}"><i class="glyphicon glyphicon-eye-open"></i><span> Registration</span></a>
                         </li>
